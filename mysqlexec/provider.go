@@ -46,7 +46,7 @@ func providerConfigure(p *schema.Provider) schema.ConfigureFunc {
 	return func(d *schema.ResourceData) (interface{}, error) {
 
 		endpoint := d.Get("endpoint").(string)
-		if strings.Index(endpoint, "/") == -1 {
+		if !strings.Contains(endpoint, "/") {
 			endpoint += "/"
 		}
 
